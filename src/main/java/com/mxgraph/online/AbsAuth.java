@@ -33,7 +33,7 @@ import com.google.gson.JsonObject;
 abstract public class AbsAuth extends HttpServlet implements AuthComm
 {
 	private static final Logger log = Logger.getLogger(AbsAuth.class.getName());
-	private static final boolean DEBUG = false;
+	private static final boolean DEBUG = true;
 	protected static final String SEPARATOR = "/:::/";
 	public static final int X_WWW_FORM_URLENCODED = 1;
 	public static final int JSON = 2;
