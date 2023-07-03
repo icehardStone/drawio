@@ -442,7 +442,9 @@ abstract public class AbsAuth extends HttpServlet implements AuthComm
 
 				urlParameters.append(urlParamsObj.toString());
 			}
-			
+			Gson gson = new Gson();
+			log.log(Level.SEVERE, gson.toJson(con));
+			log.log(Level.SEVERE, urlParameters.toString());
 			// Send post request
 			con.setDoOutput(true);
 			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
@@ -460,10 +462,9 @@ abstract public class AbsAuth extends HttpServlet implements AuthComm
 				authRes.append(inputLine);
 			}
 			in.close();
-
+			log.log(Level.SEVERE, gson.toJson(response));
 			response.status = con.getResponseCode();
 			
-			Gson gson = new Gson();
 		    
 			JsonObject json = gson.fromJson(authRes.toString(), JsonElement.class).getAsJsonObject();
 			String accessToken = getAccessToken(json);
